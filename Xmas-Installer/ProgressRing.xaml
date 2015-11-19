@@ -1,0 +1,18 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Xmas_Installer"
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Xmas_Installer.ProgressRing"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+	<Grid>
+
+		<ed:Arc Name="BackGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#D4D4D4" Stretch="None" StartAngle="0" StrokeThickness="0" />
+		<ed:Arc Name="ForeGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="0" Fill="#FF0078D7" Stretch="None" StartAngle="0" StrokeThickness="0" />
+		
+		<TextBlock x:Name="tbpercent" TextWrapping="Wrap" Text="0%" Foreground="White" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+	</Grid>
+</UserControl>

@@ -24,5 +24,10 @@ namespace Xmas_Installer
 		{
 			InitializeComponent();
 		}
+
+		private void button_Click(object sender, RoutedEventArgs e)
+		{
+			PR.Value = Convert.ToInt32(textBox.Text);
+		}
 	}
 }
