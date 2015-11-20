@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace Xmas_Installer
 {
 	/// <summary>
-	/// MainWindow.xaml에 대한 상호 작용 논리
+	/// CloseButton.xaml에 대한 상호 작용 논리
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class CloseButton : UserControl
 	{
-		public MainWindow()
+		public CloseButton()
 		{
 			InitializeComponent();
-		}
-
-		private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-		{
-			this.DragMove();
-		}
-
-		private void OnMouseLeave(object sender, MouseEventArgs e)
-		{
-			this.Close();
 		}
 	}
 }
