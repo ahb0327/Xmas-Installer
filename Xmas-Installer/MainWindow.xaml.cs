@@ -30,7 +30,7 @@ namespace Xmas_Installer
 			this.DragMove();
 		}
 
-		private void OnMouseLeave(object sender, MouseEventArgs e)
+		private void OnMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			this.Close();
 		}

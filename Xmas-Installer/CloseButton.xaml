@@ -5,9 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Xmas_Installer"
              mc:Ignorable="d" 
-             d:DesignHeight="25" d:DesignWidth="30" Background="Black" Width="30" Height="25">
+             d:DesignHeight="25" d:DesignWidth="30" Background="{x:Null}" Width="30" Height="25">
+	<UserControl.Resources>
+		<Storyboard x:Key="SBOnMouseEnter">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+				<EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.3" Value="#26FFFFFF"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="SBOnMouseLeave">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+				<EasingColorKeyFrame KeyTime="0" Value="#26FFFFFF"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.3" Value="Transparent"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="UIElement.MouseEnter">
+			<BeginStoryboard x:Name="SBOnMouseEnter_BeginStoryboard" Storyboard="{StaticResource SBOnMouseEnter}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="UIElement.MouseLeave">
+			<BeginStoryboard x:Name="SBOnMouseLeave_BeginStoryboard" Storyboard="{StaticResource SBOnMouseLeave}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="UIElement.MouseDown"/>
+	</UserControl.Triggers>
 	<Grid>
 
+		<Rectangle x:Name="rectangle" Fill="#00000000" />
 		<Path Data="M24.916667,8.1666667 L34.999666,16.416334" Stretch="Fill" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="10" Height="10" />
 		<Path Data="M36.666667,8.4166667 L26.583001,16.583" Stretch="Fill" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="10" Height="10" />
 

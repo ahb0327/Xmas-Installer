@@ -21,7 +21,7 @@
 	<Grid>
         
 		<local:ProgressRing x:Name="PR"  Width="200" Height="200" />
-		<local:CloseButton HorizontalAlignment="Right" VerticalAlignment="Top" MouseLeave="OnMouseLeave" />
+		<local:CloseButton HorizontalAlignment="Right" VerticalAlignment="Top" MouseUp="OnMouseUp" />
 
 	</Grid>
 </Window>
