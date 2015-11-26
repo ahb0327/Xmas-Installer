@@ -39,47 +39,41 @@ namespace Xmas_Installer
 			{
 				_value = value;
 
-				if ( !_isButton )
-				{
+				if (!IsButton)
 					tbpercent.Text = value.ToString() + "%";
 
-					DoubleAnimation animation = new DoubleAnimation();
-					animation.To = value * 3.6;
-					animation.BeginTime = TimeSpan.FromMilliseconds(0);
-					animation.Duration = TimeSpan.FromSeconds(1);
+				DoubleAnimation animation = new DoubleAnimation();
+				animation.To = value * 3.6;
+				animation.BeginTime = TimeSpan.FromMilliseconds(0);
+				animation.Duration = TimeSpan.FromSeconds(1);
 
-					CubicEase cubicEase = new CubicEase();
-					cubicEase.EasingMode = EasingMode.EaseOut;
+				CubicEase cubicEase = new CubicEase();
+				cubicEase.EasingMode = EasingMode.EaseOut;
 
-					animation.EasingFunction = cubicEase;
+				animation.EasingFunction = cubicEase;
 
-					Storyboard.SetTarget(animation, ForeGroundRing);
-					Storyboard.SetTargetProperty(animation, new PropertyPath(Microsoft.Expression.Shapes.Arc.EndAngleProperty));
+				Storyboard.SetTarget(animation, ForeGroundRing);
+				Storyboard.SetTargetProperty(animation, new PropertyPath(Microsoft.Expression.Shapes.Arc.EndAngleProperty));
 
-					Storyboard storyboard = new Storyboard();
-					storyboard.Children.Add(animation);
-					storyboard.Begin();
-				}
+				Storyboard storyboard = new Storyboard();
+				storyboard.Children.Add(animation);
+				storyboard.Begin();
 			}
 		}
 
 		public bool IsButton
 		{
-			get
-			{
-				return _isButton;
-			}
-			set
-			{
-				if ( _isButton )
-				{
+			get; set;
+		}
 
-				}
-				else
-				{
+		private void OnMouseEnter(object sender, MouseEventArgs e)
+		{
 
-				}
-			}
+		}
+
+		private void OnMouseLeave(object sender, MouseEventArgs e)
+		{
+
 		}
 	}
 }

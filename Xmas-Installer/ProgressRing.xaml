@@ -6,12 +6,14 @@
              xmlns:local="clr-namespace:Xmas_Installer"
              xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Xmas_Installer.ProgressRing"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
 	<Grid>
 
-		<ed:Arc Name="BackGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#D4D4D4" Stretch="None" StartAngle="0" StrokeThickness="0" />
-		<ed:Arc Name="ForeGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="0" Fill="#FF0078D7" Stretch="None" StartAngle="0" StrokeThickness="0" />
+		<Ellipse Name="Overlay" Fill="White" Opacity="0" />
 		
+		<ed:Arc Name="BackGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#D4D4D4" Stretch="None" StartAngle="0" StrokeThickness="0" />
+		<ed:Arc Name="ForeGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#FF0078D7" Stretch="None" StartAngle="0" StrokeThickness="0" />
+
 		<TextBlock x:Name="tbpercent" TextWrapping="Wrap" Text="0%" Foreground="White" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
 	</Grid>
