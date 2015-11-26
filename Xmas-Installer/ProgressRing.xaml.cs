@@ -21,7 +21,8 @@ namespace Xmas_Installer
 	/// </summary>
 	public partial class ProgressRing : UserControl
 	{
-		private int _value = 0;
+		private int _value		= 0;
+		private bool _isButton	= true;
 
 		public ProgressRing()
 		{
@@ -33,28 +34,51 @@ namespace Xmas_Installer
 			get
 			{
 				return _value;
-            }
+			}
 			set
 			{
 				_value = value;
-				tbpercent.Text = value.ToString() + "%";
 
-				DoubleAnimation animation = new DoubleAnimation();
-				animation.To		= value * 3.6;
-				animation.BeginTime	= TimeSpan.FromMilliseconds(0);
-				animation.Duration	= TimeSpan.FromSeconds(1);
+				if ( !_isButton )
+				{
+					tbpercent.Text = value.ToString() + "%";
 
-				CubicEase cubicEase = new CubicEase();
-				cubicEase.EasingMode = EasingMode.EaseOut;
+					DoubleAnimation animation = new DoubleAnimation();
+					animation.To = value * 3.6;
+					animation.BeginTime = TimeSpan.FromMilliseconds(0);
+					animation.Duration = TimeSpan.FromSeconds(1);
 
-				animation.EasingFunction = cubicEase;
+					CubicEase cubicEase = new CubicEase();
+					cubicEase.EasingMode = EasingMode.EaseOut;
 
-				Storyboard.SetTarget(animation, ForeGroundRing);
-				Storyboard.SetTargetProperty(animation, new PropertyPath(Microsoft.Expression.Shapes.Arc.EndAngleProperty));
+					animation.EasingFunction = cubicEase;
 
-				Storyboard storyboard = new Storyboard();
-				storyboard.Children.Add(animation);
-				storyboard.Begin();
+					Storyboard.SetTarget(animation, ForeGroundRing);
+					Storyboard.SetTargetProperty(animation, new PropertyPath(Microsoft.Expression.Shapes.Arc.EndAngleProperty));
+
+					Storyboard storyboard = new Storyboard();
+					storyboard.Children.Add(animation);
+					storyboard.Begin();
+				}
+			}
+		}
+
+		public bool IsButton
+		{
+			get
+			{
+				return _isButton;
+			}
+			set
+			{
+				if ( _isButton )
+				{
+
+				}
+				else
+				{
+
+				}
 			}
 		}
 	}
