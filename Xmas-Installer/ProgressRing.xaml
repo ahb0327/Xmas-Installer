@@ -6,15 +6,70 @@
              xmlns:local="clr-namespace:Xmas_Installer"
              xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Xmas_Installer.ProgressRing"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave">
+             d:DesignHeight="300" d:DesignWidth="300" Width="100" Height="100">
+	<UserControl.Resources>
+		<Storyboard x:Key="SBOnMouseEnter">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BackGround">
+				<EasingColorKeyFrame KeyTime="0" Value="#66FFFFFF"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="SBOnMouseLeave">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BackGround">
+				<EasingColorKeyFrame KeyTime="0" Value="#66FFFFFF"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="Transparent"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="tbpercent">
+				<EasingColorKeyFrame KeyTime="0" Value="#FF688B58"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BackGroundDown">
+				<EasingColorKeyFrame KeyTime="0" Value="#00688B58"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="SBOnMouseDown">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BackGroundDown">
+				<EasingColorKeyFrame KeyTime="0" Value="#FF688B58"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="tbpercent">
+				<EasingColorKeyFrame KeyTime="0" Value="White"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="SBOnMouseUp">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="tbpercent">
+				<EasingColorKeyFrame KeyTime="0" Value="White"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FF688B58"/>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="BackGroundDown">
+				<EasingColorKeyFrame KeyTime="0" Value="#FF688B58"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.2" Value="#00688B58"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="UIElement.MouseEnter">
+			<BeginStoryboard x:Name="SBOnMouseEnter_BeginStoryboard" Storyboard="{StaticResource SBOnMouseEnter}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="UIElement.MouseLeave">
+			<BeginStoryboard x:Name="SBOnMouseLeave_BeginStoryboard1" Storyboard="{StaticResource SBOnMouseLeave}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown">
+			<BeginStoryboard x:Name="SBOnMouseDown_BeginStoryboard" Storyboard="{StaticResource SBOnMouseDown}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard x:Name="SBOnMouseUp_BeginStoryboard" Storyboard="{StaticResource SBOnMouseUp}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp">
+			<BeginStoryboard x:Name="SBOnMouseDown_BeginStoryboard1" Storyboard="{StaticResource SBOnMouseUp}"/>
+		</EventTrigger>
+	</UserControl.Triggers>
 	<Grid>
 
-		<Ellipse Name="Overlay" Fill="White" Opacity="0" />
-		
-		<ed:Arc Name="BackGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#D4D4D4" Stretch="None" StartAngle="0" StrokeThickness="0" />
-		<ed:Arc Name="ForeGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#FF0078D7" Stretch="None" StartAngle="0" StrokeThickness="0" />
+		<Ellipse Name="BackGround" Fill="#00FFFFFF" />
+		<Ellipse Name="BackGroundDown" Fill="#00688B58" />
 
-		<TextBlock x:Name="tbpercent" TextWrapping="Wrap" Text="0%" Foreground="White" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		<ed:Arc Name="BackGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="360" Fill="#FFECCFCD" Stretch="None" StartAngle="0" StrokeThickness="0" />
+		<ed:Arc Name="ForeGroundRing" ArcThickness="3" ArcThicknessUnit="Pixel" EndAngle="135" Fill="#FFE44A40" Stretch="None" StartAngle="0" StrokeThickness="0" />
+
+		<TextBlock x:Name="tbpercent" TextWrapping="Wrap" Text="설치" Foreground="#FF688B58" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
 	</Grid>
 </UserControl>

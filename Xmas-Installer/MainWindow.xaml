@@ -6,22 +6,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Xmas_Installer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" WindowStyle="None" Background="Black" AllowsTransparency="True" MouseLeftButtonDown="OnMouseLeftButtonDown">
+        Title="MainWindow" Height="400" Width="525" WindowStyle="None" Background="Black" AllowsTransparency="True" ResizeMode="NoResize">
 
 	<Window.Triggers>
 		<EventTrigger RoutedEvent="Rectangle.Loaded">
 			<BeginStoryboard>
 				<Storyboard>
-					<DoubleAnimation Storyboard.TargetName="Main" Storyboard.TargetProperty="Height" From="0" To="350" Duration="0:0:0.5" />
+					<DoubleAnimation Storyboard.TargetName="Main" Storyboard.TargetProperty="Height" From="0" To="400" Duration="0:0:0.4" />
 				</Storyboard>
 			</BeginStoryboard>
 		</EventTrigger>
 	</Window.Triggers>
 
-	<Grid>
-        
-		<local:ProgressRing x:Name="PR"  Width="200" Height="200" />
-		<local:CloseButton HorizontalAlignment="Right" VerticalAlignment="Top" MouseUp="OnMouseUp" />
+	<Grid x:Name="grid">
+
+		<Image x:Name="BackGround_png" Source="BackGround.png" Stretch="UniformToFill" VerticalAlignment="Bottom" MouseLeftButtonDown="OnMouseLeftButtonDown" />
+		<local:ProgressRing x:Name="PR"  Width="100" Height="100" Margin="0,0,0,30" VerticalAlignment="Bottom" d:LayoutOverrides="Height" HorizontalAlignment="Center" />
+		<local:CloseButton x:Name="closeButton" HorizontalAlignment="Right" VerticalAlignment="Top" Width="35" Height="30" MouseLeftButtonUp="OnMouseLeftButtonUp" />
+		<Image x:Name="Logo_png" Margin="0,0,0,163" Source="Logo.png" VerticalAlignment="Bottom" Stretch="UniformToFill" Height="207" HorizontalAlignment="Center" Width="277"/>
 
 	</Grid>
 </Window>

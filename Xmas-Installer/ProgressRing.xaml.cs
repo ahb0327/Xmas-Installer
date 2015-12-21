@@ -65,15 +65,5 @@ namespace Xmas_Installer
 		{
 			get; set;
 		}
-
-		private void OnMouseEnter(object sender, MouseEventArgs e)
-		{
-
-		}
-
-		private void OnMouseLeave(object sender, MouseEventArgs e)
-		{
-
-		}
 	}
 }
